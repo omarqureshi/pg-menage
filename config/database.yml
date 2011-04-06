@@ -1,0 +1,15 @@
+common: &common
+  adapter: postgresql
+  username: omarqureshi
+
+development:
+  database: pg-menage-dev
+  <<: *common
+
+test:
+  database: pg-menage-test
+  <<: *common
+
+production:
+  database: pg-menage
+  <<: *common

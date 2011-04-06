@@ -1,0 +1,17 @@
+<% @page_title = "New content" %>
+
+<% form_for @content do |f| %>
+  <fieldset>
+    <legend><%= @page_title %></legend>
+    <ul>
+      <li>
+	<%= f.label :title %>
+        <%= f.text_field :title %>
+      </li>
+      <li>
+	<%= f.label :kind %>
+	<%= f.select :kind, Content.children.collect(&:to_s) %>
+      </li>
+    </ul>
+  </fieldset>
+<% end %>
