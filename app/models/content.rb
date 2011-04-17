@@ -9,13 +9,21 @@ class Content < ActiveRecord::Base
 
   cattr_accessor :children
   
+  def get_origin_type
+    connection.select_value(
+    "select p.relname
+     from content c, pg_class p
+     where c.tableoid = p.oid and c.id = #{id}"
+     ).classify.constantize.find(id)
+  end
+  
   def self.children
     unless @@children
       main_oid = connection.select_value("select attrelid from pg_attribute where attrelid = '#{self.to_s.tableize}'::regclass limit 1;")
       @@children = []
       add_children(main_oid)
-      @@children
     end
+    @@children
   end
 
   def self.add_children(parent_oid)

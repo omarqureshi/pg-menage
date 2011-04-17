@@ -1,10 +1,19 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
-  should validate_presence_of :title
-  should validate_presence_of :start_date
-  should validate_presence_of :body
+  context "with a published article" do
+    subject { FactoryGirl.build(:article, :published => true) }
+    should validate_presence_of :title
+    should validate_presence_of :start_date
+    should validate_presence_of :body
+  end
 
+  context "with a non-published article" do 
+    should validate_presence_of :title
+    should validate_presence_of :start_date
+    should_not validate_presence_of :body
+  end
+    
   context "when creating content" do
     setup do
       @content = []
@@ -17,7 +26,6 @@ class ArticleTest < ActiveSupport::TestCase
       assert_equal published_articles.size, 1
       assert_equal published_articles.first.title, "Content B"
     end
-    
   end
 
 end

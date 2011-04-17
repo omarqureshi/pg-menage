@@ -1,16 +1,16 @@
 <% @page_title = "New content" %>
 
-<% form_for @content do |f| %>
+<%= form_for @content do |f| %>
   <fieldset>
     <legend><%= @page_title %></legend>
     <ul>
+    <%= render :partial => "form", :locals => {:f => f} %>
       <li>
-	<%= f.label :title %>
-        <%= f.text_field :title %>
+        <%= f.label :kind %>
+        <%= f.select :kind, Content.children.map(&:to_s) %>
       </li>
       <li>
-	<%= f.label :kind %>
-	<%= f.select :kind, Content.children.collect(&:to_s) %>
+        <%= f.submit "Create" %>
       </li>
     </ul>
   </fieldset>

@@ -54,7 +54,7 @@ CREATE TABLE content (
 --
 
 CREATE TABLE articles (
-    body text NOT NULL
+    body text
 )
 INHERITS (content);
 
@@ -64,7 +64,7 @@ INHERITS (content);
 --
 
 CREATE TABLE news (
-    synopsis text NOT NULL
+    synopsis text
 )
 INHERITS (articles);
 

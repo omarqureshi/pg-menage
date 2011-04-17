@@ -15,11 +15,11 @@ create table content(
 );
 
 create table articles(
-  body                   text not null
+  body                   text
 ) inherits (content);
 
 create table news(
-  synopsis               text not null
+  synopsis               text
 ) inherits (articles);
 
 EOF

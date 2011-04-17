@@ -1,0 +1,18 @@
+<% @page_title = "Edit #{@content.title}" %>
+
+<%= form_for @content, :url => content_path(@content), :html => {:method => "put"} do |f| %>
+  <fieldset>
+    <legend><%= @page_title %></legend>
+    <ul>
+      <%= render :partial => "form", :locals => {:f => f} %>
+      <li>
+        <%= f.label :end_date %>
+        <%= f.date_select :end_date, :include_blank => true %>
+      </li>
+      <%= render(:partial => params[:kind].downcase, :locals => {:f => f}) if params[:kind] %>
+      <li>
+        <%= f.submit "Save" %>
+      </li>
+    </ul>
+  </fieldset>
+<% end %>
