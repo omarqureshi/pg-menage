@@ -28,4 +28,11 @@ class ArticleTest < ActiveSupport::TestCase
     end
   end
 
+  context "when inheriting tables" do
+    setup { @article = FactoryGirl.create(:article) }
+    should "set the id" do
+      assert @article.id
+    end
+  end
+
 end

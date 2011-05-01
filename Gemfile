@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.7'
 gem 'pg'
 gem 'shoulda', '3.0.0.beta2'
 gem 'factory_girl_rails', '1.1.beta1'
