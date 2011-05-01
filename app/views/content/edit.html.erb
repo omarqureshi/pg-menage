@@ -9,7 +9,7 @@
         <%= f.label :end_date %>
         <%= f.date_select :end_date, :include_blank => true %>
       </li>
-      <%= render(:partial => params[:kind].downcase, :locals => {:f => f}) if params[:kind] %>
+      <%= render(:partial => @content.class.to_s.downcase, :locals => {:f => f}) %>
       <li>
         <%= f.submit "Save" %>
       </li>
